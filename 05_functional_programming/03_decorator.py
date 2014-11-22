@@ -95,17 +95,31 @@ def now():
 now()
 
 # 既支持无参又支持有参的decorator
-# def log(func):
-#     if not isinstance(func, (function)):
-#     def decorator(func):
-#         @functools.wraps(func)
-#         def wrapper(*args, **kw):
-#             print '%s %s():' % (text, func.__name__)
-#             return func(*args, **kw)
-#         return wrapper
-#     return decorator
-# print 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-# @log
-# def now():
-#     print '2014-11-22'
-# now()
+def log(text):
+    if isinstance(text, str):
+        def decorator(func):
+            @functools.wraps(func)
+            def wrapper(*args, **kw):
+                print '%s %s():' % (text, func.__name__)
+                return func(*args, **kw)
+            return wrapper
+        return decorator
+    else:
+        @functools.wraps(text)
+        def wrapper(*args, **kw):
+            print 'call %s():' % text.__name__
+            return text(*args, **kw)
+        return wrapper
+
+@log
+def now():
+    print '2014-11-22'
+now()
+
+@log('execute')
+def now():
+    print '2014-11-22'
+now()
+
+# Python除了能支持OOP的decorator外，直接从语法层次支持decorator
+# Python的decorator可以用函数实现，也可以用类实现。
