@@ -48,3 +48,15 @@ with open('test.png', 'rb') as f:
 # 要读取非ASCII编码的文本文件，就必须以二进制模式打开，再解码。比如GBK编码的文件
 with open('test.txt', 'rb') as f:
     print f.read().decode('utf-8')
+
+# 写文件
+# 写文件和读文件是一样的，唯一区别是调用open()函数时，传入标识符'w'或者'wb'表示写文本文件或写二进制文件
+f = open('test.txt', 'w')
+f.write('Hello, world again!')
+f.close()
+
+# 用with语句防止数据丢失
+with open('test.txt', 'w') as f:
+    f.write('Hello, world with!')
+
+# 在Python中，文件读写是通过open()函数打开的文件对象完成的。使用with语句操作文件IO是个好习惯
