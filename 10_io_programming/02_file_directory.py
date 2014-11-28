@@ -49,3 +49,14 @@ print [x for x in os.listdir('.') if os.path.isdir(x)]
 
 # 要列出所有的.py文件，也只需一行代码
 print [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py']
+
+# 编写一个search(s)的函数，能在当前目录以及当前目录的所有子目录下查找文件名包含指定字符串的文件，并打印出完整路径
+def search(s, path='.'):
+    for x in os.listdir(path):
+        if os.path.isdir(os.path.join(path, x)):
+            #如果是文件夹，则继续递归调用search方法，路径后面加上文件夹名字
+            search(s, os.path.join(path, x))
+        elif s in x:
+            print os.path.join(os.path.abspath(path), x)
+
+search('file')
