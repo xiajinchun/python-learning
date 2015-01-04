@@ -12,6 +12,8 @@ print 'Michael' in score
 print score.get('Bob')
 print score.get('Boba',-1)
 
+score['aaa']=123
+print score['aaa']
 # 删除一个key，用pop(key)方法，对应的value也会从dict中删除
 score.pop('Michael')
 

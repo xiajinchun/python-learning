@@ -30,6 +30,13 @@ while n > 0:
     n = n - 2
 print sum
 
+if 'GET' == 'GET':
+    print 'GET'
+elif 'GET' is 'POST':
+    print 'POST'
+else:
+    print 'None'
+
 # 用raw_input()读取用户的输入，输入1982，结果却显示00后
 birth = raw_input('birth: ')
 if birth < 2000:

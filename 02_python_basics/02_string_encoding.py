@@ -23,3 +23,6 @@ print 'Age: %s. Gender: %s' % (25, True)
 
 # %%转义成一个%
 print 'growth rate: %d%%' % 7
+
+# str.format()
+print "{name}".format(name='name：夏锦春')
